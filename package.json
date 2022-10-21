@@ -3,6 +3,14 @@
   "displayName": "Containerize",
   "description": "Takes a single .NET project and creates an OCS-compliant container image and pushes to a registry.",
   "version": "0.0.1",
+  "author": "Tim Heuer",
+  "license": "MIT",
+  "projectUrl": "https://github.com/timheuer/containerize",
+  "tags": [ "dotnet", "docker", "container", "containerize" ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timheuer/containerize"
+  },
   "engines": {
     "vscode": "^1.72.0"
   },
@@ -27,7 +35,9 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "package": "npm run clean && vsce package",
+    "clean": "rimraf ./dist ./out"
   },
   "devDependencies": {
     "@types/vscode": "^1.72.0",
@@ -40,6 +50,8 @@
     "glob": "^8.0.3",
     "mocha": "^10.0.0",
     "typescript": "^4.7.4",
-    "@vscode/test-electron": "^2.1.5"
+    "@vscode/test-electron": "^2.1.5",
+    "vsce": "^2.13.0",
+    "rimraf": "^3.0.2"
   }
 }
