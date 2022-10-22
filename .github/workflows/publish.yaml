@@ -3,6 +3,10 @@ name: Build and Publish
 on:
   workflow_dispatch:
     branches: [main]
+    inputs:
+      version:
+        description: 'Version to bump `package.json` to'
+        required: true
 
 jobs:
   build:
@@ -12,6 +16,9 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18
+
+    - name: Version bump
+      run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
     - name: Install dependencies
       run: npm install
@@ -31,3 +38,13 @@ jobs:
       with:
         name: "timheuer-containerize"
         path: "**/*.vsix"
+
+    - name: Tag and Release
+      id: tag_release
+      uses: softprops/action-gh-release@v1
+      with:
+        body: Release ${{ github.event.inputs.version }}
+        tag_name: ${{ github.event.inputs.version }}
+        generate_release_notes: true
+        files: |
+          **/*.vsix
