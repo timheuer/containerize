@@ -3,6 +3,7 @@ import { window, commands, ExtensionContext } from 'vscode';
 import { containerInput } from './containerInput';
 import * as glob from 'glob';
 import { Logger } from './logging';
+import path = require('path');
 
 export async function containerizeHandler (context: ExtensionContext) {
     // get all the inputs we need
@@ -15,7 +16,7 @@ export async function containerizeHandler (context: ExtensionContext) {
         const projectFiles = glob.sync('**/*.csproj', { cwd: folder.uri.fsPath });
         if (projectFiles.length > 0) {
             const projectFile = projectFiles[0];
-            projectPath = folder.uri.fsPath + '/' + projectFile;
+            projectPath = path.posix.join(folder.uri.fsPath,projectFile);
         }
     });
     Logger.info(`Project path: ${projectPath}`);

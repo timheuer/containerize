@@ -105,7 +105,6 @@ export async function containerInput(context: ExtensionContext) {
 			validate: validateNotNull,
 			shouldResume: shouldResume
 		});
-		return (input: MultiStepInput) => inputImageName(input, state);
 	}
 
 	function shouldResume() {
