@@ -17,6 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}
 
 	// register the commands
+	Logger.info(`Registering .NET Containerizer commands...`);
 	registerCommands();	
 }
 

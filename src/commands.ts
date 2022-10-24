@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { window, commands, ExtensionContext } from 'vscode';
 import { containerInput } from './containerInput';
 import * as glob from 'glob';
+import { Logger } from './logging';
 
 export async function containerizeHandler (context: ExtensionContext) {
     // get all the inputs we need
@@ -17,6 +18,7 @@ export async function containerizeHandler (context: ExtensionContext) {
             projectPath = folder.uri.fsPath + '/' + projectFile;
         }
     });
+    Logger.info(`Project path: ${projectPath}`);
 
     // first ensure the nuget package is there
     const task = new vscode.Task(
