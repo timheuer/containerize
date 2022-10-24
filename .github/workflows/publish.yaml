@@ -17,6 +17,11 @@ jobs:
       with:
         node-version: 18
 
+    - name: Git Config ID
+      run: |
+        git config --global user.email "tim@timheuer.com"
+        git config --global user.name "Tim Heuer"
+
     - name: Version bump
       run: npm version ${{ github.event.inputs.version }}
 
