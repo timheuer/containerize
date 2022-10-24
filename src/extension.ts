@@ -2,9 +2,12 @@ import * as vscode from 'vscode';
 import { commands } from 'vscode';
 import { Commands } from './enums';
 import { containerizeHandler, addPublishContainerTaskHandler } from './commands';
+import { Logger } from './logging';
 
 // extension activation
 export function activate(context: vscode.ExtensionContext) {
+	
+	Logger.info(`Activating .NET Containerizer extension...`);
 	
 	// check for .NET
 	const csharpExtension = vscode.extensions.getExtension('ms-dotnettools.csharp');
