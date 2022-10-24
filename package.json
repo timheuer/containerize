@@ -25,10 +25,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onLanguage:csharp",
-    "workspaceContains:filePattern:**/*.csproj",
-    "onCommand:dotnet-containerizer.containerize",
-    "onCommand:dotnet-containerizer.addPublishContainerTask"
+    "*"
   ],
   "main": "./out/extension.js",
   "contributes": {
