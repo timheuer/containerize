@@ -2,7 +2,7 @@
   "name": "dotnet-containerizer",
   "displayName": ".NET Containerizer",
   "description": "Takes a single .NET project and creates an OCS-compliant container image and pushes to a registry.",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "author": "Tim Heuer",
   "publisher": "TimHeuer",
   "license": "MIT",
