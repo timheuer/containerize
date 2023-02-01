@@ -6,6 +6,7 @@
   "author": "Tim Heuer",
   "publisher": "TimHeuer",
   "license": "MIT",
+  "preview": true,
   "projectUrl": "https://github.com/timheuer/containerize",
   "icon": "resources/container.png",
   "tags": [
@@ -78,7 +79,9 @@
     "package": "npm run clean && vsce package",
     "package_noclean": "webpack --mode production --devtool hidden-source-map",
     "clean": "rimraf ./dist ./out",
-    "deploy": "vsce publish"
+    "deploy": "vsce publish",
+    "package-pre": "npm run clean && vsce package --pre-release",
+    "deploy-pre": "vsce publish --pre-release"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
