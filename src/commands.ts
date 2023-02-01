@@ -37,7 +37,7 @@ export async function containerizeHandler (context: ExtensionContext) {
         vscode.TaskScope.Workspace,
         'Publish',
         'dotnet',
-        new vscode.ShellExecution(`dotnet publish ${projectPath} --os ${(await inputs).os} --arch ${(await inputs).architecture} /p:ContainerBaseImage=${(await inputs).containerBaseImage} -c Release /t:PublishContainer /p:ContainerImageName=${(await inputs).imageName}`)
+        new vscode.ShellExecution(`dotnet publish ${projectPath} --os ${(await inputs).os} --arch ${(await inputs).architecture} /p:ContainerBaseImage=${(await inputs).containerBaseImage} /p:ContainerImageTag=${(await inputs).tag} -c Release /t:PublishContainer /p:ContainerImageName=${(await inputs).imageName}`)
     );
     vscode.tasks.executeTask(pubTask);
 };
