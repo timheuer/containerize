@@ -4,6 +4,9 @@ All notable changes to the "timheuer-containerize" extension will be documented 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.20]
+### Added
+- Added support file
 ## [0.0.17]
 
 ### Added
