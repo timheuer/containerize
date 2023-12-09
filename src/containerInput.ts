@@ -13,8 +13,8 @@ import { QuickPickItem, window, Disposable, CancellationToken, QuickInputButton,
  */
 export async function containerInput(context: ExtensionContext) {
 
-    const operatingSystems: QuickPickItem[] = ['linux', 'windows'].map(label => ({ label }));
-    const arhictectures: QuickPickItem[] = ['x64', 'x86'].map(label => ({ label }));
+	const operatingSystems: QuickPickItem[] = ['linux', 'windows'].map(label => ({ label }));
+	const arhictectures: QuickPickItem[] = ['x64', 'x86'].map(label => ({ label }));
 
 	const config = vscode.workspace.getConfiguration('dotnetContainerizer');
 	const defaultBaseImageName = config.get<string>('baseImageName') || '';
@@ -26,8 +26,8 @@ export async function containerInput(context: ExtensionContext) {
 		totalSteps: number;
 		containerBaseImage: string;
 		tag: string;
-        os: QuickPickItem | string;
-        architecture: QuickPickItem | string;
+		os: QuickPickItem | string;
+		architecture: QuickPickItem | string;
 		imageName: string;
 	}
 
@@ -53,7 +53,7 @@ export async function containerInput(context: ExtensionContext) {
 		return (input: MultiStepInput) => pickArch(input, state);
 	}
 
-    async function pickArch(input: MultiStepInput, state: Partial<State>) {
+	async function pickArch(input: MultiStepInput, state: Partial<State>) {
 		const pick = await input.showQuickPick({
 			title,
 			step: 2,
@@ -74,14 +74,14 @@ export async function containerInput(context: ExtensionContext) {
 			totalSteps: 5,
 			value: state.containerBaseImage || defaultBaseImageName,
 			prompt: 'Provide a base container image URI',
-			placeholder: 'e.g., mcr.microsoft.com/dotnet/aspnet:7.0', //TODO: get the TFM from project and append
+			placeholder: 'e.g., mcr.microsoft.com/dotnet/aspnet:8.0', //TODO: get the TFM from project and append
 			validate: validateNotNull,
 			shouldResume: shouldResume
 		});
-        return (input: MultiStepInput) => inputTag(input, state);
+		return (input: MultiStepInput) => inputTag(input, state);
 	}
 
-    async function inputTag(input: MultiStepInput, state: Partial<State>) {
+	async function inputTag(input: MultiStepInput, state: Partial<State>) {
 		state.tag = await input.showInputBox({
 			title,
 			step: 4,
@@ -120,7 +120,7 @@ export async function containerInput(context: ExtensionContext) {
 	}
 
 	const state = await collectInputs();
-	
+
 	return state;
 }
 
